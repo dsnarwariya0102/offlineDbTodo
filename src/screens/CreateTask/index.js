@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
 import React, {memo, useState} from 'react';
-import {InputField, Scaffold} from '../../components';
+import {InputField, PrimaryButton, Scaffold} from '../../components';
 import Header from '../../components/Header';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
@@ -65,7 +65,10 @@ const CreateTask = props => {
         <InputField
           placeholder="Enter title"
           value={title}
-          onChangeText={setTitle}
+          onChangeText={text => {
+            setTitle(text);
+            if (text.trim()) setErrors(prev => ({...prev, title: ''})); // Clear error
+          }}
           style={[styles.input, errors.title ? styles.errorBorder : null]}
         />
         {errors.title ? (
@@ -76,7 +79,10 @@ const CreateTask = props => {
         <InputField
           placeholder="Enter description"
           value={description}
-          onChangeText={setDescription}
+          onChangeText={text => {
+            setDescription(text);
+            if (text.trim()) setErrors(prev => ({...prev, description: ''})); // Clear error
+          }}
           multiline
           numberOfLines={5}
           style={[
@@ -89,11 +95,12 @@ const CreateTask = props => {
         ) : null}
 
         {/* Add Button */}
-        <TouchableOpacity style={styles.button} onPress={handleAddOrUpdate}>
-          <Text style={styles.buttonText}>
-            {editTask?.id ? 'Update Task' : 'Add Task'}
-          </Text>
-        </TouchableOpacity>
+        <PrimaryButton
+          title={editTask?.id ? 'Update Task' : 'Add Task'}
+          onPress={handleAddOrUpdate}
+          titleStyle={styles.buttonText}
+          btnStyle={styles.button}
+        />
       </View>
     </Scaffold>
   );

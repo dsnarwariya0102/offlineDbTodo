@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {memo} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import AppButton from '../AppButton';
+import PrimaryButton from '../PrimaryButton';
 
 const Header = ({
   onBackPress,
@@ -14,11 +14,11 @@ const Header = ({
     <LinearGradient colors={['#007BFF', '#0056b3']} style={styles.headerBar}>
       {/* Back Button */}
       {backButton ? (
-        <AppButton
-          title="←"
+        <PrimaryButton
+          title={'←'}
           onPress={onBackPress}
-          style={styles.iconButton}
-          textStyle={styles.iconText}
+          titleStyle={styles.title}
+          btnStyle={styles.iconButton}
         />
       ) : (
         <View style={styles.spacer} />
@@ -29,7 +29,12 @@ const Header = ({
 
       {/* Add Button */}
       {addBtn ? (
-        <AppButton title="+ Add" onPress={onAdd} />
+        <PrimaryButton
+          title={'+ Add'}
+          onPress={onAdd}
+          titleStyle={styles.addTitle}
+          btnStyle={styles.button}
+        />
       ) : (
         <View style={styles.spacer} />
       )}
@@ -54,18 +59,29 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
   },
+  addTitle: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+    backgroundColor: '#007BFF',
+  },
   title: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     color: '#fff',
   },
   iconButton: {
     backgroundColor: 'transparent',
-  },
-  iconText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#fff',
+    paddingVertical: 0,
+    paddingHorizontal: 0,
+    borderRadius: 0,
   },
   spacer: {
     width: 50, // Keeps spacing consistent

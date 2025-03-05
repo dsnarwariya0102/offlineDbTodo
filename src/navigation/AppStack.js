@@ -8,11 +8,7 @@ const AppStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="TaskList" component={TaskList} />
-      <Stack.Screen
-        name="CreateTask"
-        component={CreateTask}
-        options={{headerShown: false}}
-      />
+      <Stack.Screen name="CreateTask" component={CreateTask} />
     </Stack.Navigator>
   );
 };

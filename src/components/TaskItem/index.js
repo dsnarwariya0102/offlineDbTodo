@@ -1,5 +1,6 @@
 import React, {memo} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import PrimaryButton from '../PrimaryButton';
 
 const TaskItem = ({todo, onEdit, onDelete}) => {
   return (
@@ -9,16 +10,18 @@ const TaskItem = ({todo, onEdit, onDelete}) => {
         <Text style={styles.taskDescription}>{todo.description}</Text>
       </View>
       <View style={styles.actions}>
-        <TouchableOpacity
+        <PrimaryButton
+          titleStyle={styles.buttonText}
+          btnStyle={styles.editButton}
+          title={'✏️ Edit'}
           onPress={() => onEdit(todo)}
-          style={styles.editButton}>
-          <Text style={styles.buttonText}>✏️ Edit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        />
+        <PrimaryButton
+          titleStyle={styles.buttonText}
+          btnStyle={styles.deleteButton}
+          title={'🗑 Delete'}
           onPress={() => onDelete(todo.id)}
-          style={styles.deleteButton}>
-          <Text style={styles.buttonText}>🗑 Delete</Text>
-        </TouchableOpacity>
+        />
       </View>
     </View>
   );
