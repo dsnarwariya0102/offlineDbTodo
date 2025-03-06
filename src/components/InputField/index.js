@@ -1,5 +1,5 @@
 import {StyleSheet, TextInput, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 
 const InputField = ({
   placeholder,
@@ -25,7 +25,7 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default memo(InputField);
 
 const styles = StyleSheet.create({
   container: {

@@ -9,7 +9,7 @@ import React, {memo} from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const Scaffold = props => {
-  const {containerStyle = {}} = props;
+  const {containerStyle = {}, statusBackGroundColor = 'transparent'} = props;
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundColor = isDarkMode ? Colors.darker : Colors.lighter;
 
@@ -18,7 +18,7 @@ const Scaffold = props => {
       {/* Transparent StatusBar to show content behind */}
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor="transparent"
+        backgroundColor={statusBackGroundColor}
         translucent={true}
       />
 
